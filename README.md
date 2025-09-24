@@ -5,10 +5,12 @@
 
 ## Key Features
 - Vite 5, React, TypeScript
-- Tailwind CSS & shadcn/ui components
+- Tailwind CSS & shadcn/ui components with dark mode support
 - Radix UI, Lucide icons
-- Routing, forms, validation, data fetching
-- Preconfigured ESLint & TS
+- React Router for client-side navigation
+- Robust theme system with SSR compatibility
+- Centralized constants management
+- Preconfigured ESLint & TypeScript checking
 
 
 ## Prerequisites
@@ -48,6 +50,7 @@ Open the app at `http://localhost:8080`
 - `build:dev` — Build with `development` mode (useful for debugging build output)
 - `preview` — Preview the production build locally
 - `lint` — Run ESLint across the project
+- `type-check` — Run TypeScript type checking
 
 ## Example common flows:
 
@@ -75,20 +78,41 @@ pnpm install && pnpm dev
 	├─ main.tsx
 	├─ App.tsx
 	├─ index.css
+	├─ constants/
+	│  └─ index.ts  (centralized constants)
 	├─ pages/
 	│  ├─ Index.tsx
 	│  └─ NotFound.tsx
 	├─ components/
+	│  ├─ theme-toggle.tsx
 	│  └─ ui/  (shadcn/ui primitives)
 	├─ hooks/
+	│  └─ useTheme.ts  (theme management)
 	└─ lib/
 ```
 
+## Features
+
+### Dark Mode Support
+- Full dark/light theme system with system preference detection
+- SSR-compatible theme initialization
+- Automatic system preference change detection
+- Error handling for localStorage operations
+- Theme toggle component with smooth transitions
+
+### Architecture
+- Centralized constants in `/src/constants/index.ts`
+- Client-side routing with React Router
+- Type-safe theme management with proper validation
+- Memory leak prevention in theme listeners
+
 ## Notes & best practices
-- Use `.env` files and `import.meta.env` for environment configuration.
-- Add a `LICENSE` file before publishing.
-- Add CI for `install` + `npm run lint` + `npm run build`.
-- Keep component primitives in `src/components/ui/` for reuse.
+- Use `.env` files and `import.meta.env` for environment configuration
+- All constants are centralized in `/src/constants/index.ts`
+- Theme system supports 'light', 'dark', and 'system' modes
+- Add a `LICENSE` file before publishing
+- Add CI for `install` + `npm run lint` + `npm run type-check` + `npm run build`
+- Keep component primitives in `src/components/ui/` for reuse
 
 ## License
 This boilerplate is unlicensed by default. Add a `LICENSE` file if you intend to publish or share this repository with an attached license.
