@@ -4,7 +4,7 @@ import { useTheme } from '@/hooks/useTheme';
 
 export const ThemeToggle = () => {
   const { theme, setTheme } = useTheme();
-  
+
   if (!theme || !setTheme) {
     return null;
   }

@@ -8,8 +8,12 @@ const Index = () => {
         <ThemeToggle />
       </div>
       <div className="text-center">
-        <h1 className="text-4xl font-bold mb-4">{APP_CONSTANTS.MESSAGES.WELCOME_TITLE}</h1>
-        <p className="text-xl text-muted-foreground">{APP_CONSTANTS.MESSAGES.WELCOME_SUBTITLE}</p>
+        <h1 className="text-4xl font-bold mb-4">
+          {APP_CONSTANTS.MESSAGES.WELCOME_TITLE}
+        </h1>
+        <p className="text-xl text-muted-foreground">
+          {APP_CONSTANTS.MESSAGES.WELCOME_SUBTITLE}
+        </p>
       </div>
     </div>
   );

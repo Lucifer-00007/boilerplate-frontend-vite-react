@@ -32,10 +32,10 @@ export const useTheme = () => {
         root.classList.remove('light', 'dark');
         root.classList.add(mediaQuery.matches ? 'dark' : 'light');
       };
-      
+
       applySystemTheme();
       mediaQuery.addEventListener('change', applySystemTheme);
-      
+
       return () => mediaQuery.removeEventListener('change', applySystemTheme);
     } else {
       root.classList.add(theme);
