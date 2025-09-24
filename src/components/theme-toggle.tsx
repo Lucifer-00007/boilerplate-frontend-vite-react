@@ -4,9 +4,17 @@ import { useTheme } from '@/hooks/useTheme';
 
 export const ThemeToggle = () => {
   const { theme, setTheme } = useTheme();
+  
+  if (!theme || !setTheme) {
+    return null;
+  }
 
   const toggleTheme = () => {
-    setTheme(theme === 'light' ? 'dark' : 'light');
+    if (theme === 'light') {
+      setTheme('dark');
+    } else {
+      setTheme('light');
+    }
   };
 
   return (
