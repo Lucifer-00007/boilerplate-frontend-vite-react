@@ -2,11 +2,21 @@ import { useEffect, useState } from 'react';
 
 type Theme = 'dark' | 'light' | 'system';
 
+const isValidTheme = (value: string): value is Theme => {
+  return ['dark', 'light', 'system'].includes(value);
+};
+
 export const useTheme = () => {
-  const [theme, setTheme] = useState<Theme>(() => {
-    const stored = localStorage.getItem('theme') as Theme;
-    return stored || 'system';
-  });
+  const [theme, setTheme] = useState<Theme>('system');
+
+  useEffect(() => {
+    if (typeof window !== 'undefined') {
+      const stored = localStorage.getItem('theme');
+      if (stored && isValidTheme(stored)) {
+        setTheme(stored);
+      }
+    }
+  }, []);
 
   useEffect(() => {
     const root = window.document.documentElement;
@@ -21,7 +31,9 @@ export const useTheme = () => {
   }, [theme]);
 
   const setThemeValue = (theme: Theme) => {
-    localStorage.setItem('theme', theme);
+    if (typeof window !== 'undefined') {
+      localStorage.setItem('theme', theme);
+    }
     setTheme(theme);
   };
 
